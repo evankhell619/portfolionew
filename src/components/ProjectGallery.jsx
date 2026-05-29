@@ -283,17 +283,17 @@ export default function ProjectGallery({ onOpenProject }) {
           <div className="flex items-center gap-4 mb-10">
             <div className="w-2 h-2 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
-              02. Past_Explorations
+              02. Side_Quest
             </span>
             <div className="flex-1 h-[1px] bg-white/5" />
           </div>
 
           <h2 className="text-5xl font-black text-white uppercase leading-[0.92] tracking-tight">
-            Past<br />
-            <span className="text-pink-400">Explorations</span>
+            Side<br />
+            <span className="text-pink-400">Quest</span>
           </h2>
           <p className="mt-4 text-neutral-400 text-sm leading-6 max-w-sm">
-            Transforming ideas into real-world applications.
+            A collection of projects, experiments, and challenges I've taken on throughout my journey as a developer. Each one taught me something new and helped shape the way I build software today.
           </p>
         </div>
 
@@ -400,7 +400,7 @@ export default function ProjectGallery({ onOpenProject }) {
       >
         <div className="w-2 h-2 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
         <span className="font-mono text-xs font-bold uppercase tracking-[0.26em] text-white/40">
-          02. Past_Explorations
+              02. Side_Quest
         </span>
         <div className="flex-1 h-[1px] bg-white/5" />
       </Gsap.div>
@@ -419,11 +419,11 @@ export default function ProjectGallery({ onOpenProject }) {
             className="flex flex-col justify-center shrink-0 h-[70vh] w-[40vw]"
           >
             <h2 className="text-6xl lg:text-8xl font-black text-white uppercase leading-[0.92]">
-              Past<br />
-              <span className="text-pink-400">Explorations</span>
+              Side<br />
+              <span className="text-pink-400">Quest</span>
             </h2>
             <p className="mt-8 text-neutral-300 max-w-md text-lg leading-7">
-              Transforming ideas into real-world applications.
+              A collection of projects, experiments, and challenges I've taken on throughout my journey as a developer. Each one taught me something new and helped shape the way I build software today.
             </p>
             <ArrowUpRight className="text-pink-400 w-24 h-24 mt-8" />
           </Gsap.div>

@@ -78,16 +78,16 @@ export const PORTFOLIO_DATA = {
     ],
     projects: [
         {
-            slug: "diabetes-classification",
-            title: "Diabetes Classification",
-            category: "AI / Machine Learning",
-            description: "Machine Learning model to classify diabetes risk based on medical data."
+            slug: "girl-boss",
+            title: "Girl Boss",
+            category: "Beauty Service Website",
+            description: "Next.js website for a Nail Art and Eyelash Extension studio."
         },
         {
             slug: "leadsup",
-            title: "LeadsUp",
-            category: "AI-Powered Lead Scoring",
-            description: "AI system for scoring sales leads to prioritize high-value prospects."
+            title: "JoyHub",
+            category: "Movie Discovery App",
+            description: "React Vite app integrated with TMDB for movie discovery, trailers, cast search, favorites, and theme mode."
         },
         {
             slug: "polsekrembang",

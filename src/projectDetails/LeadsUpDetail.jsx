@@ -1,36 +1,67 @@
 import ProjectCaseLayout from "../components/projects/ProjectCaseLayout";
 
 export const project = {
-  title: "LeadsUp",
-  category: "AI-Powered Lead Scoring",
-  heroImg:
-    "/placeholder.svg",
+  title: "JoyHub",
+  category: "Movie Discovery App",
+  heroImg: "/Side_Quest/2/1.png",
   tagline:
-    "An AI-powered sales portal that prioritizes the most promising prospects for term deposit subscriptions - helping sales teams focus on high-value leads and boost follow-up efficiency.",
+    "A React + Vite movie discovery app integrated with the TMDB API, automatically surfacing new movie data, trailers, casts, synopses, and favorites in a polished browsing experience.",
   year: "2025",
-  stack: ["Python", "React", "Tailwind", "REST API", "ExpressJS", "Supabase"],
+  stack: ["React", "Vite", "Material UI", "TMDB API", "YouTube Trailer Embed", "Authentication", "Dark / Light Mode"],
   features: [
-    "Auto-ranking leads: automatically sorts prospects by highest subscription probability for term deposits.",
-    "Transparent lead scoring: each prospect has a score/probability so sales can prioritize calls data-driven, not randomly.",
-    "Concise sales dashboard: KPI overview of total leads, contacted, pending follow-ups, conversion rate, and high-priority prospects.",
-    "Quick filter & segmentation: sort by status (contacted/pending), priority, and key attributes (age/job/campaign history).",
-    "Actionable lead detail view: displays key prospect information to help sales tailor their approach when reaching out.",
-    "Follow-up workflow: contact status updates + activity logging so every prospect's progress is tracked and never missed.",
+    "TMDB API integration keeps movie listings, metadata, cast information, and new releases automatically updated.",
+    "User login flow for saving favorite movies, actors, and personal watch references.",
+    "Movie search and actor search to explore who plays in a title and discover related filmographies.",
+    "Trailer playback integrated with YouTube so users can preview movies directly from the app.",
+    "Dark mode and light mode support for a more comfortable browsing experience.",
+    "Focuses on discovery content such as trailers, synopsis, cast, ratings, and metadata; it does not stream full movies.",
   ],
   impact: [
-    "Helps sales save time by focusing on the most promising prospects based on model predictions, rather than calling randomly.",
-    "Increases campaign conversion rates by directing follow-up priority to prospects with the highest probability.",
-    "Provides an easy-to-use MVP for daily sales workflow: ranking > contact > update status > monitor results.",
+    "Gives users one place to browse movie information without manually checking multiple sources.",
+    "Improves discovery by connecting titles, actors, trailers, and favorites in a single interface.",
+    "Keeps content fresh because data follows TMDB updates rather than static manual entries.",
   ],
   links: {
-    repo: "https://github.com/evan/Predictive-Lead-Scoring-Portal-for-Banking",
+    live: "",
+    repo: "",
   },
 };
+
+const screenshots = [
+  "/Side_Quest/2/1.png",
+  "/Side_Quest/2/2.png",
+  "/Side_Quest/2/3.png",
+  "/Side_Quest/2/4.png",
+  "/Side_Quest/2/5.png",
+  "/Side_Quest/2/6.png",
+];
+
+const JoyHubScreenshots = (
+  <section>
+    <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/40 mb-6 flex items-center gap-3">
+      <span className="w-6 h-[1px] bg-black/20" /> Visual Preview
+    </h2>
+    <div className="grid md:grid-cols-2 gap-4">
+      {screenshots.map((src, index) => (
+        <div key={src} className="aspect-video overflow-hidden rounded-md border border-black/10 bg-white">
+          <img
+            src={src}
+            alt={`JoyHub preview ${index + 1}`}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
 export default function LeadsUpDetail({ onClose, mode }) {
   return (
     <ProjectCaseLayout
       project={project}
+      preFeatureSection={JoyHubScreenshots}
       onClose={onClose}
       closeLabel={mode === "modal" ? "Close" : "Back to Home"}
       mode={mode}

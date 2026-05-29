@@ -40,11 +40,11 @@ export const SECTION_REGISTRY = [
   },
   {
     id: 'scroll_to_projects',
-    label: 'Past Explorations / Projects',
+    label: 'Side Quest / Projects',
     elementId: 'project-section',
     synonyms: [
       'project', 'projek', 'proyek', 'portfolio', 'karya',
-      'exploration', 'past exploration', 'logs',
+      'exploration', 'past exploration', 'side quest', 'logs',
       'list project', 'daftar project', 'semua project', 'all project',
       'show project', 'lihat project', 'apa aja project',
     ],
