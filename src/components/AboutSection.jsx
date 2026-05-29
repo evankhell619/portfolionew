@@ -183,7 +183,7 @@ const AboutSection = memo(function AboutSection() {
                 {/* Name plate at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 px-5 pt-10 pb-4 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-20">
                   <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/50 mb-0.5">Name</p>
-                  <p className="text-white font-bold text-[15px] tracking-wide leading-snug">Evan</p>
+                  <p className="text-white font-bold text-[15px] tracking-wide leading-snug">Hanifan Budi Hartono</p>
                 </div>
 
                 {/* Corner brackets */}
@@ -300,7 +300,7 @@ const AboutSection = memo(function AboutSection() {
                 {CAPABILITIES.map((cap, i) => (
                   <span
                     key={i}
-                    className="font-mono text-[10px] md:text-[10.5px] uppercase tracking-[0.12em] font-bold text-black/75 border border-black/[0.11] px-3.5 py-[9px] rounded-[3px] hover:border-black hover:text-black hover:bg-black hover:text-white transition-all duration-200 cursor-default"
+                    className="font-mono text-[10px] md:text-[10.5px] uppercase tracking-[0.12em] font-bold text-black/75 border border-black/[0.11] px-3.5 py-[9px] rounded-[3px] hover:border-black hover:bg-black hover:text-white transition-all duration-200 cursor-default"
                   >
                     {cap}
                   </span>

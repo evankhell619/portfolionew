@@ -125,9 +125,9 @@ const Footer = memo(function Footer() {
               <span className="font-mono text-[10px] text-white/30 uppercase tracking-[0.18em] md:tracking-[0.24em] mb-4 border-l-2 border-pink-400 pl-3">Networks</span>
 
               {[
-                { label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=firdauskhotibulevan@gmail.com', icon: Mail },
+                { label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=evan@gmail.com', icon: Mail },
                 { label: 'GitHub', href: 'https://github.com/evan', icon: Github },
-                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/firdauskhotibulevan/', icon: Linkedin },
+                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/evan/', icon: Linkedin },
               ].map((link) => (
                 <a
                   key={link.label}

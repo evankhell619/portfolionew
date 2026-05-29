@@ -4,10 +4,10 @@ export const PORTFOLIO_DATA = {
         role: "Full-Stack Developer",
         bio: "Passionate about building practical digital products, scalable systems, and data-driven web experiences.",
         location: "Indonesia",
-        email: "firdauskhotibulevan@gmail.com",
+        email: "evan@gmail.com",
         socials: {
             github: "https://github.com/evan",
-            linkedin: "https://linkedin.com/in/firdauskhotibulevan/"
+            linkedin: "https://linkedin.com/in/evan/"
         }
     },
     experience: [

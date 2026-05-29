@@ -130,10 +130,10 @@ const Navbar = memo(function Navbar() {
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`group pointer-events-auto flex items-center gap-3 px-5 py-2.5 rounded-full backdrop-blur-md border transition-all duration-500 cursor-pointer ${isOnDarkSection ? 'bg-black/25 border-white/25 shadow-[0_8px_24px_rgba(0,0,0,0.22)]' : scrolled ? 'bg-white/80 border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]' : 'bg-transparent border-transparent'}`}
+          className={`group pointer-events-auto flex items-center gap-3 px-5 py-2.5 rounded-full border transition-all duration-500 cursor-pointer hover:shadow-[0_0_30px_rgba(244,114,182,0.3)] ${isOnDarkSection ? 'bg-white border-white text-black shadow-[0_8px_24px_rgba(0,0,0,0.18)]' : 'bg-black border-black text-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]'}`}
         >
 
-          <span className={`text-sm font-black tracking-[0.16em] md:tracking-[0.2em] uppercase transition-colors duration-300 ${isOnDarkSection ? 'text-white' : 'text-black'}`}>
+          <span className="text-sm font-black tracking-[0.16em] md:tracking-[0.2em] uppercase text-pink-400 transition-colors duration-300">
             Evan
           </span>
         </div>
