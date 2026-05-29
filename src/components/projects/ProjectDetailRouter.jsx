@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProjectRouteConfig } from "../../projectDetails/projectRegistry";
+import { getProjectRouteConfig } from "./projectRegistry";
 
 const LoadingState = () => (
   <div className="p-8 text-center text-sm font-bold uppercase tracking-[0.2em]">
