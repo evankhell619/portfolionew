@@ -110,14 +110,22 @@ body {
 /* Custom Text Selection Color */
 ::selection {
   background-color: #f472b6;
-  /* pink-400 */
   color: #000000;
 }
 
 ::-moz-selection {
   background-color: #f472b6;
-  /* pink-400 */
   color: #000000;
+}
+
+.selection-invert ::selection {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.selection-invert ::-moz-selection {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 /* Lenis Recommended Styles */

@@ -35,6 +35,7 @@ export default function ProjectGallery({
   description = "A collection of projects, experiments, and challenges I've taken on throughout my journey as a developer. Each one taught me something new and helped shape the way I build software today.",
   cardIdPrefix = "project",
   quickFilters = [],
+  variant = "dark",
 }) {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
@@ -44,6 +45,23 @@ export default function ProjectGallery({
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
   const [enablePinnedScroll, setEnablePinnedScroll] = useState(true);
+  const isPinkVariant = variant === "pink";
+
+  const theme = {
+    sectionBg: isPinkVariant ? "bg-pink-400" : "bg-neutral-900",
+    headerDot: isPinkVariant ? "bg-black shadow-[0_0_8px_rgba(0,0,0,0.35)]" : "bg-pink-400 shadow-[0_0_8px_rgba(244,114,182,0.8)]",
+    headerText: isPinkVariant ? "text-black/55" : "text-white/40",
+    divider: isPinkVariant ? "bg-black/15" : "bg-white/5",
+    title: isPinkVariant ? "text-black" : "text-white",
+    titleAccent: isPinkVariant ? "text-white" : "text-pink-400",
+    description: isPinkVariant ? "text-black/70" : "text-neutral-400",
+    desktopDescription: isPinkVariant ? "text-black/75" : "text-neutral-300",
+    arrow: isPinkVariant ? "text-black" : "text-pink-400",
+    counter: isPinkVariant ? "text-black/45" : "text-white/30",
+    indicatorActive: isPinkVariant ? "bg-black" : "bg-pink-400",
+    indicatorInactive: isPinkVariant ? "bg-black/25" : "bg-white/20",
+    desktopIndicatorInactive: isPinkVariant ? "bg-black/25" : "bg-white/30",
+  };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -333,22 +351,22 @@ export default function ProjectGallery({
   // ── MOBILE LAYOUT ──
   if (!enablePinnedScroll) {
     return (
-      <section ref={sectionRef} className="relative bg-neutral-900 overflow-hidden py-16 pb-20">
+      <section ref={sectionRef} className={`relative ${theme.sectionBg} ${isPinkVariant ? "selection-invert" : ""} overflow-hidden py-16 pb-20`}>
         {/* Section Header */}
         <div className="px-6 mb-10">
           <div className="flex items-center gap-4 mb-10">
-            <div className="w-2 h-2 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
+            <div className={`w-2 h-2 rounded-full ${theme.headerDot}`} />
+            <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${theme.headerText}`}>
               {sectionNumber}. {sectionKicker}
             </span>
-            <div className="flex-1 h-[1px] bg-white/5" />
+            <div className={`flex-1 h-[1px] ${theme.divider}`} />
           </div>
 
-          <h2 className="text-5xl font-black text-white uppercase leading-[0.92] tracking-tight">
+          <h2 className={`text-5xl font-black uppercase leading-[0.92] tracking-tight ${theme.title}`}>
             {titleLine1}<br />
-            <span className="text-pink-400">{titleAccent}</span>
+            <span className={theme.titleAccent}>{titleAccent}</span>
           </h2>
-          <p className="mt-4 text-neutral-400 text-sm leading-6 max-w-sm">
+          <p className={`mt-4 text-sm leading-6 max-w-sm ${theme.description}`}>
             {description}
           </p>
           <QuickFilterButtons />
@@ -356,14 +374,14 @@ export default function ProjectGallery({
 
         {/* Project Counter */}
         <div className="px-6 mb-6 flex items-center justify-between">
-          <span className="font-mono text-xs text-white/30 uppercase tracking-[0.16em]">
+          <span className={`font-mono text-xs uppercase tracking-[0.16em] ${theme.counter}`}>
             {String(activeProjectIndex + 1).padStart(2, '0')} / {String(projectCount).padStart(2, '0')}
           </span>
           <div className="flex gap-1.5">
             {projects.map((_, i) => (
               <div
                 key={i}
-                className={`h-1 rounded-full transition-all duration-300 ${i === activeProjectIndex ? 'w-6 bg-pink-400' : 'w-1.5 bg-white/20'}`}
+                className={`h-1 rounded-full transition-all duration-300 ${i === activeProjectIndex ? `w-6 ${theme.indicatorActive}` : `w-1.5 ${theme.indicatorInactive}`}`}
               />
             ))}
           </div>
@@ -446,7 +464,7 @@ export default function ProjectGallery({
 
   // ── DESKTOP LAYOUT (GSAP horizontal pinned scroll) ──
   return (
-    <section ref={sectionRef} className="relative bg-neutral-900 overflow-hidden h-[100dvh]">
+    <section ref={sectionRef} className={`relative ${theme.sectionBg} ${isPinkVariant ? "selection-invert" : ""} overflow-hidden h-[100dvh]`}>
 
       {/* Section Header */}
       <Gsap.div
@@ -455,11 +473,11 @@ export default function ProjectGallery({
         viewport={{ once: true }}
         className="absolute top-16 left-24 right-24 flex items-center gap-4 z-20 pointer-events-none"
       >
-        <div className="w-2 h-2 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
-        <span className="font-mono text-xs font-bold uppercase tracking-[0.26em] text-white/40">
+        <div className={`w-2 h-2 rounded-full ${theme.headerDot}`} />
+        <span className={`font-mono text-xs font-bold uppercase tracking-[0.26em] ${theme.headerText}`}>
               {sectionNumber}. {sectionKicker}
         </span>
-        <div className="flex-1 h-[1px] bg-white/5" />
+        <div className={`flex-1 h-[1px] ${theme.divider}`} />
       </Gsap.div>
 
       {/* Horizontal scroll track */}
@@ -475,15 +493,15 @@ export default function ProjectGallery({
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col justify-center shrink-0 h-[70vh] w-[40vw]"
           >
-            <h2 className="text-6xl lg:text-8xl font-black text-white uppercase leading-[0.92]">
+            <h2 className={`text-6xl lg:text-8xl font-black uppercase leading-[0.92] ${theme.title}`}>
               {titleLine1}<br />
-              <span className="text-pink-400">{titleAccent}</span>
+              <span className={theme.titleAccent}>{titleAccent}</span>
             </h2>
-            <p className="mt-8 text-neutral-300 max-w-md text-lg leading-7">
+            <p className={`mt-8 max-w-md text-lg leading-7 ${theme.desktopDescription}`}>
               {description}
             </p>
             <QuickFilterButtons />
-            <ArrowUpRight className="text-pink-400 w-24 h-24 mt-8" />
+            <ArrowUpRight className={`${theme.arrow} w-24 h-24 mt-8`} />
           </Gsap.div>
 
           {/* Project Cards */}
@@ -581,7 +599,7 @@ export default function ProjectGallery({
           return (
             <div
               key={index}
-              className={`h-2 rounded-full transition-all duration-300 ${isActive ? 'w-8 bg-pink-400' : 'w-2 bg-white/30'}`}
+              className={`h-2 rounded-full transition-all duration-300 ${isActive ? `w-8 ${theme.indicatorActive}` : `w-2 ${theme.desktopIndicatorInactive}`}`}
             />
           );
         })}

@@ -28,7 +28,7 @@ export default function ProjectCaseLayout({
   mode,
 }) {
   return (
-    <div className={`bg-[#FAF9F6] text-black font-sans selection:bg-pink-400 selection:text-black overflow-x-hidden ${mode === 'page' ? 'min-h-screen' : 'h-full flex flex-col'}`}>
+    <div className={`bg-[#FAF9F6] text-black font-sans overflow-x-hidden ${mode === 'page' ? 'min-h-screen' : 'h-full flex flex-col'}`}>
 
       {/* ── Sticky header ─────────────────────── */}
       <div className="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-black/5">

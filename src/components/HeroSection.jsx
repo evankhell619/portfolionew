@@ -116,7 +116,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
     <header
       ref={containerRef}
       id="hero-section"
-      className="min-h-[100svh] w-full relative bg-[#FAF9F6] selection:bg-pink-300 selection:text-black overflow-hidden flex flex-col items-center justify-center pt-16 pb-16"
+      className="min-h-[100svh] w-full relative bg-[#FAF9F6] overflow-hidden flex flex-col items-center justify-center pt-16 pb-16"
     >
       {/* ── BACKGROUND ENGINEERING Grid & Dynamic Glow ── */}
       <Gsap.div

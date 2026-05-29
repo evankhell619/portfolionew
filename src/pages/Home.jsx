@@ -66,7 +66,7 @@ export default function Home() {
   }, [navigate, location]);
 
   return (
-    <div className="bg-[#FAF9F6] text-black selection:bg-pink-400 selection:text-black relative">
+    <div className="bg-[#FAF9F6] text-black relative">
       {isLoading && (
         <Preloader
           onComplete={() => {
@@ -106,8 +106,8 @@ export default function Home() {
       <Suspense fallback={null}><ProfessionalExperience /></Suspense>
       <Suspense fallback={null}><TechStack /></Suspense>
 
-      <div id="project-section" className="bg-neutral-900">
-        <Suspense fallback={<div className="h-screen bg-neutral-900" />}>
+      <div id="project-section" className="bg-pink-400">
+        <Suspense fallback={<div className="h-screen bg-pink-400" />}>
           <ProjectGallery
             projects={PROJECT_META}
             onOpenProject={handleOpenProject}
@@ -116,6 +116,7 @@ export default function Home() {
             titleLine1="Side"
             titleAccent="Quest"
             cardIdPrefix="side-quest"
+            variant="pink"
           />
         </Suspense>
       </div>

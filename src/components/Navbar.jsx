@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { label: 'Side', sectionId: 'project-section' },
 ];
 
-const DARK_SECTION_IDS = ['main-quest-section', 'project-section', 'tech-stack-section', 'contact-section'];
+const DARK_SECTION_IDS = ['main-quest-section', 'tech-stack-section', 'contact-section'];
 
 const Navbar = memo(function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
