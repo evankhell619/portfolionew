@@ -151,7 +151,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'radial-gradient(circle at 18% 18%, rgba(163, 230, 53, 0.14), transparent 44%), radial-gradient(circle at 82% 15%, rgba(132, 204, 22, 0.1), transparent 42%), radial-gradient(circle at 50% 85%, rgba(190, 242, 100, 0.09), transparent 50%), linear-gradient(135deg, rgba(163, 230, 53, 0.02), rgba(234, 179, 8, 0.01))'
+            backgroundImage: 'radial-gradient(circle at 18% 18%, rgba(244, 114, 182, 0.14), transparent 44%), radial-gradient(circle at 82% 15%, rgba(236, 72, 153, 0.1), transparent 42%), radial-gradient(circle at 50% 85%, rgba(251, 207, 232, 0.12), transparent 50%), linear-gradient(135deg, rgba(244, 114, 182, 0.025), rgba(236, 72, 153, 0.012))'
           }}
         />
 
@@ -249,7 +249,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           <OrbitingDecoration icon={Cpu} delay={0.58} className="right-6 sm:right-12 lg:right-28 -bottom-2 hidden sm:flex" isRevealed={isRevealed} enableAmbientMotion={enableAmbientMotion} />
         </div>
 
-        {/* 3. Clean Slogan with Green Accent */}
+        {/* 3. Clean Slogan with Pink Accent */}
         <Gsap.div
           initial={false}
           animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
