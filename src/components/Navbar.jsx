@@ -6,19 +6,19 @@ import { exponentialEaseOut } from '../utils/easing';
 
 const NAV_ITEMS = [
   { label: 'About', sectionId: 'about-section' },
-  { label: 'Logs', sectionId: 'project-section' },
+  { label: 'Main', sectionId: 'main-quest-section' },
   { label: 'Work', sectionId: 'experience-section' },
   { label: 'Stack', sectionId: 'tech-stack-section' },
-  { label: 'Stats', sectionId: 'github-stats-section' },
-  { label: 'Skills', sectionId: 'tech-stack-section' },
+  { label: 'Side', sectionId: 'project-section' },
 ];
 
-const DARK_SECTION_IDS = ['project-section', 'tech-stack-section', 'github-stats-section', 'contact-section'];
+const DARK_SECTION_IDS = ['main-quest-section', 'project-section', 'tech-stack-section', 'contact-section'];
 
 const Navbar = memo(function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isOnDarkSection, setIsOnDarkSection] = useState(false);
+  const [activeSectionId, setActiveSectionId] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const previousBodyOverflowRef = useRef('');
   const menuStoppedLenisRef = useRef(false);
@@ -42,6 +42,18 @@ const Navbar = memo(function Navbar() {
           return rect.top <= probeY && rect.bottom >= probeY;
         });
         setIsOnDarkSection((prev) => (prev === nextOnDark ? prev : nextOnDark));
+
+        let nextActiveSectionId = null;
+        for (const item of NAV_ITEMS) {
+          const el = document.getElementById(item.sectionId);
+          if (!el) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= probeY && rect.bottom >= probeY) {
+            nextActiveSectionId = item.sectionId;
+            break;
+          }
+        }
+        setActiveSectionId((prev) => (prev === nextActiveSectionId ? prev : nextActiveSectionId));
 
         ticking = false;
       });
@@ -180,7 +192,7 @@ const Navbar = memo(function Navbar() {
                   >
                     <div className="flex items-center gap-4">
                       <span className={`text-[11px] font-mono font-bold tracking-[0.14em] ${isOnDarkSection ? 'text-white/50' : 'text-black/35'}`}>{String(i + 1).padStart(2, '0')}</span>
-                      <span className={`text-[30px] leading-none font-black uppercase tracking-tight ${isOnDarkSection ? 'text-white' : 'text-black/90'}`}>{item.label}</span>
+                      <span className={`text-[30px] leading-none font-black uppercase tracking-tight ${activeSectionId === item.sectionId ? 'text-pink-400' : isOnDarkSection ? 'text-white' : 'text-black/90'}`}>{item.label}</span>
                     </div>
                     <span className={`w-8 h-8 rounded-full border flex items-center justify-center ${isOnDarkSection ? 'border-white/20' : 'border-black/15'}`}>
                       <ArrowUpRight size={15} className={isOnDarkSection ? 'text-white/70' : 'text-black/45'} />
@@ -218,7 +230,7 @@ const Navbar = memo(function Navbar() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => scrollTo(item.sectionId)}
-                className={`relative px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] transition-colors ${isOnDarkSection ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
+                className={`relative px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] transition-colors ${activeSectionId === item.sectionId ? 'text-pink-400 hover:text-pink-400' : isOnDarkSection ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
               >
                 <span className="relative z-10">{item.label}</span>
                 {hoveredIndex === index && (

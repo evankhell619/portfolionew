@@ -6,13 +6,14 @@ import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import useLenis from '../hooks/useLenis';
 import useScrollToGallery from '../hooks/useScrollToGallery';
+import { MAIN_QUEST_META } from '../data/mainQuestMeta';
+import { PROJECT_META } from '../data/projectMeta';
 
 const MarqueeBanner = lazy(() => import('../components/MarqueeBanner'));
 const AboutSection = lazy(() => import('../components/AboutSection'));
 const Footer = lazy(() => import('../components/Footer'));
 
 const ProjectGallery = lazy(() => import('../components/ProjectGallery'));
-const GitHubStats = lazy(() => import('../components/GitHubStats'));
 const TechStack = lazy(() => import('../components/TechStack'));
 const NoiseOverlay = lazy(() => import('../components/NoiseOverlay'));
 const ProfessionalExperience = lazy(() => import('../components/ProfessionalExperience'));
@@ -83,15 +84,42 @@ export default function Home() {
       <Suspense fallback={null}><MarqueeBanner /></Suspense>
       <Suspense fallback={null}><AboutSection /></Suspense>
 
-      <div id="project-section" ref={galleryRef} className="bg-neutral-900">
+      <div id="main-quest-section" ref={galleryRef} className="bg-neutral-900">
         <Suspense fallback={<div className="h-screen bg-neutral-900" />}>
-          <ProjectGallery onOpenProject={handleOpenProject} />
+          <ProjectGallery
+            projects={MAIN_QUEST_META}
+            onOpenProject={handleOpenProject}
+            sectionNumber="02"
+            sectionKicker="Main_Quest"
+            titleLine1="Main"
+            titleAccent="Quest"
+            cardIdPrefix="main-quest"
+            quickFilters={[
+              { label: ".NET", category: ".NET" },
+              { label: "PowerApps", category: "PowerApps" },
+            ]}
+            description="Current work across operational applications for division-specific workflows, including PowerApps tools and .NET systems built for daily business use."
+          />
         </Suspense>
       </div>
 
       <Suspense fallback={null}><ProfessionalExperience /></Suspense>
       <Suspense fallback={null}><TechStack /></Suspense>
-      <Suspense fallback={null}><GitHubStats /></Suspense>
+
+      <div id="project-section" className="bg-neutral-900">
+        <Suspense fallback={<div className="h-screen bg-neutral-900" />}>
+          <ProjectGallery
+            projects={PROJECT_META}
+            onOpenProject={handleOpenProject}
+            sectionNumber="05"
+            sectionKicker="Side_Quest"
+            titleLine1="Side"
+            titleAccent="Quest"
+            cardIdPrefix="side-quest"
+          />
+        </Suspense>
+      </div>
+
       <Suspense fallback={null}><Footer /></Suspense>
     </div>
   );

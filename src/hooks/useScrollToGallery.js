@@ -28,8 +28,14 @@ const useScrollToGallery = (galleryRef, isLoading) => {
     const params = new URLSearchParams(location.search);
     const scrollTo = params.get('scrollTo');
 
-    if (scrollTo && scrollTo.startsWith('project-')) {
+    if (scrollTo && (scrollTo.startsWith('project-') || scrollTo.startsWith('main-quest-') || scrollTo.startsWith('side-quest-'))) {
       const scrollToGallery = async () => {
+        const directTarget = document.getElementById(scrollTo);
+        if (directTarget) {
+          directTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+          return;
+        }
+
         if (!galleryRef.current) return;
 
         const section = galleryRef.current;

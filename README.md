@@ -1,6 +1,6 @@
 # Portfolio Dev
 
-Portfolio Dev adalah website portfolio interaktif berbasis React + Vite untuk menampilkan profil, project case study, experience, tech stack, dan GitHub stats.
+Portfolio Dev adalah website portfolio interaktif berbasis React + Vite untuk menampilkan profil, project case study, experience, dan tech stack.
 
 ## Gambaran Singkat
 
@@ -140,7 +140,6 @@ Karena ini SPA, pastikan rewrite/fallback route diarahkan ke `index.html` supaya
 
 - Build tidak muncul di folder yang diharapkan: hasilnya ada di `build/`, bukan `dist/`.
 - CV tidak sesuai: ganti file `public/cv.pdf`.
-- GitHub stats kosong: kemungkinan kena rate limit API publik.
 
 ## License
 

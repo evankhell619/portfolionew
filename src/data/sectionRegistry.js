@@ -40,13 +40,22 @@ export const SECTION_REGISTRY = [
   },
   {
     id: 'scroll_to_projects',
+    label: 'Main Quest / Current Projects',
+    elementId: 'main-quest-section',
+    synonyms: [
+      'project', 'projek', 'proyek', 'portfolio', 'karya',
+      'main quest', 'current project', 'project sekarang', 'project utama',
+      'list project', 'daftar project', 'semua project', 'all project',
+      'show project', 'lihat project', 'apa aja project',
+    ],
+  },
+  {
+    id: 'scroll_to_side_quest',
     label: 'Side Quest / Projects',
     elementId: 'project-section',
     synonyms: [
-      'project', 'projek', 'proyek', 'portfolio', 'karya',
-      'exploration', 'past exploration', 'side quest', 'logs',
-      'list project', 'daftar project', 'semua project', 'all project',
-      'show project', 'lihat project', 'apa aja project',
+      'side quest', 'side project', 'past exploration', 'exploration', 'logs',
+      'project lama', 'project sampingan', 'eksperimen',
     ],
   },
   {
@@ -70,16 +79,6 @@ export const SECTION_REGISTRY = [
       'pakai apa', 'pake apa', 'tech', 'stack',
       'tech yang dipakai', 'tech yang dipake',
       'skill teknis', 'technical skill',
-    ],
-  },
-  {
-    id: 'scroll_to_github',
-    label: 'GitHub Stats / Coding Stats',
-    elementId: 'github-stats-section',
-    synonyms: [
-      'github', 'kontribusi', 'contribution', 'commit',
-      'repository', 'repo', 'github stats', 'git stats',
-      'coding stats', 'open source',
     ],
   },
   {

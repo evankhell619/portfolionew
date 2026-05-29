@@ -17,14 +17,14 @@ export default function ProjectDetailRouter({ mode = "page" }) {
 
   const handleClose = () => {
     if (mode === "modal") navigate(-1);
-    else navigate(`/?scrollTo=project-${routeConfig.id}`);
+    else navigate(`/?scrollTo=${routeConfig.scrollTarget || `project-${routeConfig.id}`}`);
   };
 
   const ProjectComponent = routeConfig.Component;
 
   return (
     <Suspense fallback={<LoadingState />}>
-      <ProjectComponent mode={mode} onClose={handleClose} />
+      <ProjectComponent mode={mode} onClose={handleClose} metadata={routeConfig} />
     </Suspense>
   );
 }

@@ -101,7 +101,8 @@ const Footer = memo(function Footer() {
 
               {[
                 { label: 'About', id: 'about-section' },
-                { label: 'Projects', id: 'project-section' },
+                { label: 'Main Quest', id: 'main-quest-section' },
+                { label: 'Side Quest', id: 'project-section' },
                 { label: 'Experience', id: 'experience-section' },
                 { label: 'Tech Stack', id: 'tech-stack-section' }
               ].map((item) => (

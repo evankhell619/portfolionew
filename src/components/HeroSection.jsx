@@ -272,7 +272,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           className="flex flex-wrap items-center justify-center gap-4 mt-5"
         >
           <button
-            onClick={() => document.getElementById('project-section')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('main-quest-section')?.scrollIntoView({ behavior: 'smooth' })}
             className="group flex items-center gap-2 bg-black text-white px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider hover:bg-pink-400 hover:text-black transition-all duration-300 cursor-pointer"
           >
             View Projects <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

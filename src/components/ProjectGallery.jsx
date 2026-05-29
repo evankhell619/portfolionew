@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PROJECT_META } from "../data/projectMeta";
 
 const INDICATOR_CARD_WIDTH = 600;
 const INDICATOR_GAP = 48;
@@ -26,7 +25,17 @@ function cloudinarySrc(originalUrl, width) {
   }
 }
 
-export default function ProjectGallery({ onOpenProject }) {
+export default function ProjectGallery({
+  projects,
+  onOpenProject,
+  sectionNumber = "03",
+  sectionKicker = "Side_Quest",
+  titleLine1 = "Side",
+  titleAccent = "Quest",
+  description = "A collection of projects, experiments, and challenges I've taken on throughout my journey as a developer. Each one taught me something new and helped shape the way I build software today.",
+  cardIdPrefix = "project",
+  quickFilters = [],
+}) {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const mobileScrollRef = useRef(null);
@@ -69,14 +78,13 @@ export default function ProjectGallery({ onOpenProject }) {
     };
   }, []);
 
+  const projectCount = projects.length;
+
   // Preload gambar pertama untuk smooth loading
   useEffect(() => {
     const firstImage = new Image();
-    firstImage.src = cloudinarySrc(PROJECT_META[0]?.img, 800);
-  }, []);
-
-  const projects = PROJECT_META;
-  const projectCount = projects.length;
+    firstImage.src = cloudinarySrc(projects[0]?.img, 800);
+  }, [projects]);
 
   useEffect(() => {
     if (!enablePinnedScroll) {
@@ -269,6 +277,54 @@ export default function ProjectGallery({ onOpenProject }) {
     };
   }, [enablePinnedScroll, maxScroll, projectCount]);
 
+  const scrollToCategory = (category) => {
+    const index = projects.findIndex((project) => project.category === category);
+    if (index < 0) return;
+
+    if (!enablePinnedScroll) {
+      const container = mobileScrollRef.current;
+      const card = container?.querySelector(`[data-project-index="${index}"]`);
+      if (container && card) {
+        container.scrollTo({
+          left: Math.max(0, card.offsetLeft - 24),
+          behavior: "smooth",
+        });
+      }
+      return;
+    }
+
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const st = ScrollTrigger.getAll().find((instance) => instance.trigger === section);
+    const targetX = Math.min(maxScroll, INDICATOR_INTRO_WIDTH + index * (INDICATOR_CARD_WIDTH + INDICATOR_GAP));
+    const targetScroll = st ? st.start + targetX : section.offsetTop;
+    const lenis = window.lenisInstance;
+
+    if (lenis && typeof lenis.scrollTo === "function") {
+      lenis.scrollTo(targetScroll, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }
+  };
+
+  const QuickFilterButtons = () => (
+    quickFilters.length > 0 && (
+      <div className="mt-6 flex flex-wrap gap-3">
+        {quickFilters.map((filter) => (
+          <button
+            key={filter.category}
+            type="button"
+            onClick={() => scrollToCategory(filter.category)}
+            className="border border-pink-400/40 px-5 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-pink-400 hover:bg-pink-400 hover:text-black transition-colors"
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+    )
+  );
+
   /* ═══════════════════════════════════════════
      Desktop: GSAP horizontal pinned scroll
      Mobile:  Vertical stacked cards
@@ -283,18 +339,19 @@ export default function ProjectGallery({ onOpenProject }) {
           <div className="flex items-center gap-4 mb-10">
             <div className="w-2 h-2 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
-              02. Side_Quest
+              {sectionNumber}. {sectionKicker}
             </span>
             <div className="flex-1 h-[1px] bg-white/5" />
           </div>
 
           <h2 className="text-5xl font-black text-white uppercase leading-[0.92] tracking-tight">
-            Side<br />
-            <span className="text-pink-400">Quest</span>
+            {titleLine1}<br />
+            <span className="text-pink-400">{titleAccent}</span>
           </h2>
           <p className="mt-4 text-neutral-400 text-sm leading-6 max-w-sm">
-            A collection of projects, experiments, and challenges I've taken on throughout my journey as a developer. Each one taught me something new and helped shape the way I build software today.
+            {description}
           </p>
+          <QuickFilterButtons />
         </div>
 
         {/* Project Counter */}
@@ -320,12 +377,12 @@ export default function ProjectGallery({ onOpenProject }) {
           {projects.map((project, index) => (
             <Gsap.div
               key={project.id}
-              id={`project-${project.id}`}
+              id={`${cardIdPrefix}-${project.id}`}
               onClick={() => onOpenProject?.(project)}
-              role="button"
-              tabIndex={0}
+              role={onOpenProject ? "button" : undefined}
+              tabIndex={onOpenProject ? 0 : undefined}
               onKeyDown={(e) => { if (e.key === "Enter") onOpenProject?.(project); }}
-              className="project-card group relative w-[80vw] shrink-0 snap-center overflow-hidden rounded-lg border border-white/10 bg-neutral-950 cursor-pointer active:scale-[0.98] transition-transform"
+              className={`project-card group relative w-[80vw] shrink-0 snap-center overflow-hidden rounded-lg border border-white/10 bg-neutral-950 transition-transform ${onOpenProject ? 'cursor-pointer active:scale-[0.98]' : 'cursor-default'}`}
               data-project-index={index}
               style={{ WebkitTapHighlightColor: 'transparent', aspectRatio: '3/4' }}
             >
@@ -357,7 +414,7 @@ export default function ProjectGallery({ onOpenProject }) {
               {/* Number badge */}
               <div className="absolute top-4 right-4 z-10">
                 <span className="font-mono text-3xl font-light text-white/15 tracking-wider">
-                  0{project.id}
+                  {String(project.id).padStart(2, '0')}
                 </span>
               </div>
 
@@ -400,7 +457,7 @@ export default function ProjectGallery({ onOpenProject }) {
       >
         <div className="w-2 h-2 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(244,114,182,0.8)]" />
         <span className="font-mono text-xs font-bold uppercase tracking-[0.26em] text-white/40">
-              02. Side_Quest
+              {sectionNumber}. {sectionKicker}
         </span>
         <div className="flex-1 h-[1px] bg-white/5" />
       </Gsap.div>
@@ -419,12 +476,13 @@ export default function ProjectGallery({ onOpenProject }) {
             className="flex flex-col justify-center shrink-0 h-[70vh] w-[40vw]"
           >
             <h2 className="text-6xl lg:text-8xl font-black text-white uppercase leading-[0.92]">
-              Side<br />
-              <span className="text-pink-400">Quest</span>
+              {titleLine1}<br />
+              <span className="text-pink-400">{titleAccent}</span>
             </h2>
             <p className="mt-8 text-neutral-300 max-w-md text-lg leading-7">
-              A collection of projects, experiments, and challenges I've taken on throughout my journey as a developer. Each one taught me something new and helped shape the way I build software today.
+              {description}
             </p>
+            <QuickFilterButtons />
             <ArrowUpRight className="text-pink-400 w-24 h-24 mt-8" />
           </Gsap.div>
 
@@ -432,14 +490,14 @@ export default function ProjectGallery({ onOpenProject }) {
           {projects.map((project, index) => (
             <Gsap.div
               key={project.id}
-              id={`project-${project.id}`}
+              id={`${cardIdPrefix}-${project.id}`}
               onClick={() => onOpenProject?.(project)}
-              role="button"
-              tabIndex={0}
+              role={onOpenProject ? "button" : undefined}
+              tabIndex={onOpenProject ? 0 : undefined}
               onKeyDown={(e) => {
                 if (e.key === "Enter") onOpenProject?.(project);
               }}
-              className="project-card group relative h-[70vh] w-[45vw] shrink-0 overflow-hidden rounded-[4px] border border-white/10 bg-neutral-900 transition-all duration-500 hover:border-pink-400/50 hover:shadow-[0_0_40px_rgba(244,114,182,0.1)] active:scale-[0.98] cursor-pointer"
+              className={`project-card group relative h-[70vh] w-[45vw] shrink-0 overflow-hidden rounded-[4px] border border-white/10 bg-neutral-900 transition-all duration-500 hover:border-pink-400/50 hover:shadow-[0_0_40px_rgba(244,114,182,0.1)] ${onOpenProject ? 'active:scale-[0.98] cursor-pointer' : 'cursor-default'}`}
               data-project-index={index}
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
@@ -505,7 +563,7 @@ export default function ProjectGallery({ onOpenProject }) {
                 <div className="flex items-start">
                   <span className="font-mono text-sm text-pink-400 font-bold mr-1 pt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">NO.</span>
                   <span className="font-mono text-5xl font-light text-white/20 tracking-[0.18em] group-hover:text-white/40 transition-colors duration-500">
-                    0{project.id}
+                    {String(project.id).padStart(2, '0')}
                   </span>
                 </div>
               </Gsap.div>
