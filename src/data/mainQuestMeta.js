@@ -1,8 +1,16 @@
 export const MAIN_QUEST_META = [
-  ...Array.from({ length: 5 }, (_, index) => ({
-    id: index + 1,
-    slug: `dotnet-${String(index + 1).padStart(2, "0")}`,
-    title: `.NET ${String(index + 1).padStart(2, "0")}`,
+  {
+    id: 1,
+    slug: "dotnet-01",
+    title: "ARPAY REQUEST PAYMENT",
+    category: ".NET",
+    color: "bg-purple-400",
+    img: "/Main_Quest/RP/1.png",
+  },
+  ...Array.from({ length: 4 }, (_, index) => ({
+    id: index + 2,
+    slug: `dotnet-${String(index + 2).padStart(2, "0")}`,
+    title: `.NET ${String(index + 2).padStart(2, "0")}`,
     category: ".NET",
     color: "bg-purple-400",
     img: "/placeholder.svg",
