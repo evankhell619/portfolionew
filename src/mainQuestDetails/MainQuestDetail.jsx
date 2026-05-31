@@ -31,6 +31,37 @@ const arpayProject = {
   },
 };
 
+const cashAdvanceProject = {
+  title: "ARPAY CASH ADVANCE",
+  titleLines: ["ARPAY", "CASH ADVANCE"],
+  category: ".NET Application",
+  heroImg: "/Main_Quest/CA/1.png",
+  tagline:
+    "ARPAY is a finance division superapp, and Cash Advance is one of its sub-modules for managing advance payment requests, settlements, approvals, reporting, and finance documentation.",
+  year: "2025",
+  stack: [".NET", "C#", "ASP.NET Core", "Sneat", "SQL Server", "Microsoft Entra", "Power BI"],
+  features: [
+    "Cash Advance Request menu for submitting advance fund requests with structured transaction data and supporting documents.",
+    "Cash Advance Settlement menu for reconciling advance funds when there is remaining money to return or additional shortage to settle.",
+    "Approval Request menu with multi-level approval flow for reviewing and authorizing cash advance requests.",
+    "Approval Settlement menu with approval levels for validating settlement results before the process is finalized.",
+    "Supports two transaction types, cash and transfer, so finance can handle different payment methods in one workflow.",
+    "Master data management for maintaining reusable finance references used across request, settlement, and approval flows.",
+    "Power BI report integration to help finance monitor cash advance requests, settlements, approval progress, and operational trends.",
+    "User accounts integrated with Microsoft Entra so access can follow company identity and permission management.",
+    "Sneat-based interface for a clean dashboard experience with practical forms, tables, and workflow-oriented screens.",
+  ],
+  impact: [
+    "Helps finance manage cash advance requests and settlements in one structured digital workflow.",
+    "Improves control over advance funds by separating request approval and settlement approval processes.",
+    "Reduces manual reconciliation errors by documenting cash, transfer, remaining fund, and shortage scenarios more clearly.",
+  ],
+  links: {
+    live: "",
+    repo: "",
+  },
+};
+
 const arpayScreenshots = [
   "/Main_Quest/RP/1.png",
   "/Main_Quest/RP/2.png",
@@ -39,7 +70,16 @@ const arpayScreenshots = [
   "/Main_Quest/RP/5.png",
 ];
 
-const ArpayScreenshots = (
+const cashAdvanceScreenshots = [
+  "/Main_Quest/CA/1.png",
+  "/Main_Quest/CA/2.png",
+  "/Main_Quest/CA/3.png",
+  "/Main_Quest/CA/4.png",
+  "/Main_Quest/CA/5.png",
+  "/Main_Quest/CA/6.png",
+];
+
+const createScreenshotSection = (screenshots, altLabel) => (
   <section>
     <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/40 mb-6 flex items-center gap-3">
       <span className="w-6 h-[1px] bg-black/20" /> Visual Preview
@@ -49,7 +89,7 @@ const ArpayScreenshots = (
         <div key={src} className="aspect-video overflow-hidden rounded-md border border-black/10 bg-white">
           <img
             src={src}
-            alt={`ARPAY request payment preview ${index + 1}`}
+            alt={`${altLabel} preview ${index + 1}`}
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover"
@@ -60,9 +100,16 @@ const ArpayScreenshots = (
   </section>
 );
 
+const ArpayScreenshots = createScreenshotSection(arpayScreenshots, "ARPAY request payment");
+const CashAdvanceScreenshots = createScreenshotSection(cashAdvanceScreenshots, "ARPAY cash advance");
+
 const buildProject = (metadata) => {
   if (metadata?.slug === "dotnet-01") {
     return arpayProject;
+  }
+
+  if (metadata?.slug === "dotnet-02") {
+    return cashAdvanceProject;
   }
 
   const isDotnet = metadata?.category === ".NET";
@@ -105,10 +152,15 @@ const buildProject = (metadata) => {
 };
 
 export default function MainQuestDetail({ metadata, onClose, mode }) {
+  const preFeatureSectionBySlug = {
+    "dotnet-01": ArpayScreenshots,
+    "dotnet-02": CashAdvanceScreenshots,
+  };
+
   return (
     <ProjectCaseLayout
       project={buildProject(metadata)}
-      preFeatureSection={metadata?.slug === "dotnet-01" ? ArpayScreenshots : undefined}
+      preFeatureSection={preFeatureSectionBySlug[metadata?.slug]}
       onClose={onClose}
       closeLabel={mode === "modal" ? "Close" : "Back to Home"}
       mode={mode}
