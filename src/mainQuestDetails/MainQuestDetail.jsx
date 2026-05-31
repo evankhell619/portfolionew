@@ -62,6 +62,37 @@ const cashAdvanceProject = {
   },
 };
 
+const expenseClaimProject = {
+  title: "ARPAY EXPENSE CLAIM",
+  titleLines: ["ARPAY", "EXPENSE CLAIM"],
+  category: ".NET Application",
+  heroImg: "/Main_Quest/EC/1.png",
+  tagline:
+    "ARPAY is a finance division superapp, and Expense Claim is one of its sub-modules for managing employee reimbursement claims with structured submission, approval, tracking, and finance documentation.",
+  year: "2025",
+  stack: [".NET", "C#", "ASP.NET Core", "Sneat", "SQL Server", "Microsoft Entra", "Power BI"],
+  features: [
+    "Expense claim request flow for reimbursement submissions with structured claim data, supporting documents, and finance validation.",
+    "Internal employee claim creation, where only internal employees can directly create reimbursement claims in the system.",
+    "External claim support through internal request creation, so external parties can still be processed when an internal employee submits the claim on their behalf.",
+    "Multi-level approval flow to keep reimbursement review structured, traceable, and aligned with internal authorization rules.",
+    "Log history for recording claim activity, status changes, approval movement, and important process updates.",
+    "Master data management for maintaining reusable finance references used across claim forms, approval flows, and reporting.",
+    "Power BI report integration to help finance monitor claim volume, claim status, reimbursement trends, and operational performance.",
+    "User accounts integrated with Microsoft Entra so access can follow company identity and permission management.",
+    "Sneat-based interface for a clean dashboard experience with practical forms, tables, and workflow-oriented screens.",
+  ],
+  impact: [
+    "Helps finance manage reimbursement claims in a more organized and traceable digital workflow.",
+    "Improves control over who can submit claims directly while still supporting external reimbursement scenarios through internal users.",
+    "Reduces manual follow-up by making claim history, approval progress, and documentation easier to review.",
+  ],
+  links: {
+    live: "",
+    repo: "",
+  },
+};
+
 const arpayScreenshots = [
   "/Main_Quest/RP/1.png",
   "/Main_Quest/RP/2.png",
@@ -79,13 +110,21 @@ const cashAdvanceScreenshots = [
   "/Main_Quest/CA/6.png",
 ];
 
+const expenseClaimScreenshots = [
+  "/Main_Quest/EC/1.png",
+  "/Main_Quest/EC/2.png",
+  "/Main_Quest/EC/3.png",
+  "/Main_Quest/EC/4.png",
+  "/Main_Quest/EC/5.png",
+];
+
 const createScreenshotSection = (screenshots, altLabel) => (
   <section>
     <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/40 mb-6 flex items-center gap-3">
       <span className="w-6 h-[1px] bg-black/20" /> Visual Preview
     </h2>
     <div className="grid md:grid-cols-2 gap-4">
-      {arpayScreenshots.map((src, index) => (
+      {screenshots.map((src, index) => (
         <div key={src} className="aspect-video overflow-hidden rounded-md border border-black/10 bg-white">
           <img
             src={src}
@@ -102,6 +141,7 @@ const createScreenshotSection = (screenshots, altLabel) => (
 
 const ArpayScreenshots = createScreenshotSection(arpayScreenshots, "ARPAY request payment");
 const CashAdvanceScreenshots = createScreenshotSection(cashAdvanceScreenshots, "ARPAY cash advance");
+const ExpenseClaimScreenshots = createScreenshotSection(expenseClaimScreenshots, "ARPAY expense claim");
 
 const buildProject = (metadata) => {
   if (metadata?.slug === "dotnet-01") {
@@ -110,6 +150,10 @@ const buildProject = (metadata) => {
 
   if (metadata?.slug === "dotnet-02") {
     return cashAdvanceProject;
+  }
+
+  if (metadata?.slug === "dotnet-03") {
+    return expenseClaimProject;
   }
 
   const isDotnet = metadata?.category === ".NET";
@@ -155,6 +199,7 @@ export default function MainQuestDetail({ metadata, onClose, mode }) {
   const preFeatureSectionBySlug = {
     "dotnet-01": ArpayScreenshots,
     "dotnet-02": CashAdvanceScreenshots,
+    "dotnet-03": ExpenseClaimScreenshots,
   };
 
   return (
