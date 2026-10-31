@@ -5,7 +5,6 @@ import { MAIN_QUEST_META_BY_SLUG } from "../../data/mainQuestMeta";
 const SIDE_QUEST_DETAIL_COMPONENTS = {
   "girl-boss": lazy(() => import("../../sideQuestDetails/DiabetesClassificationDetail")),
   leadsup: lazy(() => import("../../sideQuestDetails/LeadsUpDetail")),
-  polsekrembang: lazy(() => import("../../sideQuestDetails/PolsekRembangDetail")),
 };
 
 const MainQuestDetail = lazy(() => import("../../mainQuestDetails/MainQuestDetail"));

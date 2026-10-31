@@ -90,12 +90,6 @@ export const PORTFOLIO_DATA = {
             description: "React Vite app integrated with TMDB for movie discovery, trailers, cast search, favorites, and theme mode."
         },
         {
-            slug: "polsekrembang",
-            title: "Polsek Rembang Virtual Assistant",
-            category: "RAG Chatbot / AI Assistant",
-            description: "RAG-based chatbot to assist with police station inquiries and services."
-        },
-        {
             slug: "floodsegmen",
             title: "Flood Segmentation Analyzer",
             category: "Computer Vision",
@@ -151,3 +145,4 @@ export const PORTFOLIO_DATA = {
         "UI UX"
     ]
 };
+
