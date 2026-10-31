@@ -64,11 +64,23 @@ export default function ProjectCaseLayout({
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.9] tracking-tighter text-black mb-6"
           >
-            {project.title.split(' ').map((word, i, arr) => (
-              <span key={i} className={i === arr.length - 1 ? "text-transparent" : ""} style={i === arr.length - 1 ? { WebkitTextStroke: '2px black' } : {}}>
-                {word}{i !== arr.length - 1 ? ' ' : ''}
-              </span>
-            ))}
+            {project.titleLines ? (
+              project.titleLines.map((line, index) => (
+                <span
+                  key={line}
+                  className={`block ${index === project.titleLines.length - 1 ? "text-transparent" : ""}`}
+                  style={index === project.titleLines.length - 1 ? { WebkitTextStroke: '2px black' } : {}}
+                >
+                  {line}
+                </span>
+              ))
+            ) : (
+              project.title.split(' ').map((word, i, arr) => (
+                <span key={i} className={i === arr.length - 1 ? "text-transparent" : ""} style={i === arr.length - 1 ? { WebkitTextStroke: '2px black' } : {}}>
+                  {word}{i !== arr.length - 1 ? ' ' : ''}
+                </span>
+              ))
+            )}
           </Gsap.h1>
 
           <Gsap.p

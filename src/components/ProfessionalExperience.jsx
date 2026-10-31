@@ -5,61 +5,53 @@ import { Plus, Calendar, Building2, Sparkles, ArrowUpRight } from 'lucide-react'
 
 const experiences = [
   {
-    company: 'GDSC Udinus',
-    role: 'Developer Community',
-    period: 'Nov 2023 - Nov 2025',
-    impact: 'Contributed to 5+ technical discussions across 4 collaborative projects.',
-    stack: ['Community', 'Workshops', 'Collaboration'],
+    role: '.NET Developer',
+    company: 'Enterprise Web Apps',
+    period: '2025 - Active Now',
+    impact: 'Builds business applications with .NET, structured data access, API integration, and Radzen-based user interfaces.',
+    stack: ['.NET', 'C#', 'ASP.NET Core', 'Blazor', 'SQL Server'],
     description: [
-      'Actively participated in workshops, technical events, and collaborative learning sessions.',
-      'Contributed insights around development and analytics in community-driven projects.',
+      'Implements REST APIs, validation flows, authentication-aware features, and database operations using the .NET ecosystem.',
+      'Uses Radzen as the frontend UI library to build practical forms, tables, dialogs, and data-driven application screens.',
+      'Applies separation of concerns across application, infrastructure, and presentation layers to keep code easier to maintain.',
+      'Collaborates with frontend and business users to translate operational requirements into stable application behavior.',
     ],
   },
   {
-    company: 'Blockvizo',
-    role: 'Data Analyst',
-    period: 'Jun 2024 - Jul 2025',
-    impact: 'Improved forecasting accuracy by 35% and cut analysis time by 40%.',
-    stack: ['Data Analysis', 'Dashboards', 'Web3 Analytics', 'Predictive Modeling'],
+    role: 'Power Platform Developer',
+    company: 'Microsoft Power Platform',
+    period: '2024 - Active Now',
+    impact: 'Creates Power Platform solutions that simplify workflows, approvals, forms, data management, and operational reporting.',
+    stack: ['Power Apps', 'Power Automate', 'Dataverse', 'SharePoint', 'Power BI'],
     description: [
-      'Processed 50,000+ game hash history records to model item-drop probability behavior.',
-      'Built actionable dashboards for decentralized projects, enabling faster and more confident decisions.',
-      'Specialized in predictive airdrop and winning probability analysis across 10+ Web3 ecosystems.',
+      'Builds Power Apps canvas and model-driven apps for business processes that need faster iteration and easier adoption.',
+      'Automates repetitive workflows with Power Automate, including approval flows, notifications, and data synchronization.',
+      'Uses SharePoint and Dataverse as practical data sources for forms, lists, records, and business process tracking.',
+      'Connects Power Apps, Power Automate, SharePoint, Dataverse, and reporting tools to support day-to-day decisions.',
     ],
   },
   {
-    company: 'ASAH (led by Dicoding x Accenture)',
-    role: 'Machine Learning Cohort',
-    period: 'Aug 2025 - Jan 2026',
-    impact: 'Served as project manager during the capstone phase and improved team execution by 70%.',
-    stack: ['Project Leadership', 'ML Product', 'React', 'Stakeholder Sync'],
+    role: 'Frontend Developer',
+    company: 'Frontend Delivery',
+    period: '2024',
+    impact: 'Turns product requirements into responsive interfaces with clear flows, usable states, and maintainable components.',
+    stack: ['React', 'Next.js', 'JavaScript', 'Tailwind CSS', 'UI Integration'],
     description: [
-      'Acted as project manager during capstone, leading a cross-functional team of 5 machine learning engineers and React developers.',
-      'Managed the development of a banking sales prediction portal to prioritize high-probability leads and reduce low-value outreach.',
-      'Coordinated timelines and technical workflows across functions to improve delivery speed and reliability.',
+      'Builds responsive pages, forms, dashboards, and detail views that connect cleanly with backend services.',
+      'Prioritizes readable UI states, consistent spacing, and practical interaction patterns for repeated business use.',
+      'Handles API integration, loading states, validation feedback, and component-level organization for scalable frontend work.',
     ],
   },
   {
-    company: 'Programming Lab',
-    role: 'Lab Assistant',
-    period: 'Aug 2025 - Present',
-    impact: 'Mentored 110+ junior students through practical engineering sessions.',
-    stack: ['Teaching', 'Mentorship', 'Software Fundamentals'],
+    role: 'Full Stack Developer',
+    company: 'React & Next.js Projects',
+    period: '2023',
+    impact: 'Started building end-to-end web applications by combining frontend interfaces, backend logic, and practical product thinking.',
+    stack: ['React', 'Next.js', 'Node.js', 'REST API', 'Git'],
     description: [
-      'Assisted in 3+ weekly academic lab sessions for programming and software engineering courses.',
-      'Mentored around 110 junior students in problem solving, practical exercises, and core programming concepts.',
-    ],
-  },
-  {
-    company: 'PIJAK (led by Dicoding x IBM)',
-    role: 'AI Engineer Cohort',
-    period: 'Jan 2026 - Present',
-    impact: 'Selected participant in the PIJAK AI Engineer cohort.',
-    stack: ['Python', 'Generative AI', 'Deep Learning', 'AI Ethics'],
-    description: [
-      'Joined an intensive AI Engineer cohort focused on Generative AI, Deep Learning, and AI Ethics.',
-      'Developing advanced AI solutions with Python and industry-standard practices from the IBM SkillsBuild curriculum.',
-      'Building capstone-ready systems for real-world AI implementation challenges.',
+      'Developed web project foundations with reusable components, page routing, API integration, and structured project organization.',
+      'Built user-facing flows while learning how frontend behavior, backend data, and deployment constraints connect in real products.',
+      'Strengthened software fundamentals through debugging, documentation, version control, and iterative feature delivery.',
     ],
   },
 ];
@@ -70,7 +62,7 @@ function getStartYear(period) {
 }
 
 const ExperienceItem = ({ experience, isExpanded, onToggle, index }) => {
-  const isCurrent = /present/i.test(experience.period);
+  const isCurrent = /present|active now/i.test(experience.period);
 
   return (
     <article className="relative min-w-0">
@@ -168,8 +160,7 @@ const ProfessionalExperience = () => {
 
   const statCards = useMemo(() => {
     const roles = experiences.length;
-    const activeNow = experiences.filter((item) => /present/i.test(item.period)).length;
-    const organizations = new Set(experiences.map((item) => item.company)).size;
+    const activeNow = experiences.filter((item) => /present|active now/i.test(item.period)).length;
     const startYears = experiences.map((item) => getStartYear(item.period)).filter(Boolean);
     const firstYear = startYears.length ? Math.min(...startYears) : new Date().getFullYear();
 
@@ -177,7 +168,6 @@ const ProfessionalExperience = () => {
       { label: 'Total Roles', value: String(roles).padStart(2, '0') },
       { label: 'Active Now', value: String(activeNow).padStart(2, '0') },
       { label: 'Since', value: String(firstYear) },
-      { label: 'Organizations', value: String(organizations).padStart(2, '0') },
     ];
   }, []);
 
@@ -205,10 +195,10 @@ const ProfessionalExperience = () => {
             </h2>
 
             <p className="mt-5 text-[14px] md:text-[15px] font-light leading-[1.8] text-black/60 max-w-[320px]">
-              Selected roles across AI cohorts, data analytics, and mentoring. Each step adds stronger delivery habits, leadership, and product clarity.
+              Focused on full stack development for business applications, combining .NET backend engineering, responsive frontend delivery, and Power Apps workflow automation.
             </p>
 
-            <div className="mt-7 grid grid-cols-2 gap-2.5">
+            <div className="mt-7 grid grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-2.5">
               {statCards.map((stat) => (
                 <div key={stat.label} className="border border-black/[0.09] bg-white rounded-[4px] px-3.5 py-3.5">
                   <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-black/38">{stat.label}</p>
