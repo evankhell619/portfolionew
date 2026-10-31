@@ -31,18 +31,6 @@ const experiences = [
     ],
   },
   {
-    role: 'Frontend Developer',
-    company: 'Frontend Delivery',
-    period: '2024',
-    impact: 'Turns product requirements into responsive interfaces with clear flows, usable states, and maintainable components.',
-    stack: ['React', 'Next.js', 'JavaScript', 'Tailwind CSS', 'UI Integration'],
-    description: [
-      'Builds responsive pages, forms, dashboards, and detail views that connect cleanly with backend services.',
-      'Prioritizes readable UI states, consistent spacing, and practical interaction patterns for repeated business use.',
-      'Handles API integration, loading states, validation feedback, and component-level organization for scalable frontend work.',
-    ],
-  },
-  {
     role: 'Full Stack Developer',
     company: 'React & Next.js Projects',
     period: '2023',
@@ -195,7 +183,7 @@ const ProfessionalExperience = () => {
             </h2>
 
             <p className="mt-5 text-[14px] md:text-[15px] font-light leading-[1.8] text-black/60 max-w-[320px]">
-              Focused on full stack development for business applications, combining .NET backend engineering, responsive frontend delivery, and Power Apps workflow automation.
+              Focused on full stack development for business applications, combining .NET backend engineering, web application development, and Power Apps workflow automation.
             </p>
 
             <div className="mt-7 grid grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-2.5">
