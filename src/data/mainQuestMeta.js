@@ -23,10 +23,26 @@ export const MAIN_QUEST_META = [
     color: "bg-purple-400",
     img: "/Main_Quest/EC/1.png",
   },
-  ...Array.from({ length: 2 }, (_, index) => ({
-    id: index + 4,
-    slug: `dotnet-${String(index + 4).padStart(2, "0")}`,
-    title: `.NET ${String(index + 4).padStart(2, "0")}`,
+  {
+    id: 4,
+    slug: "dotnet-04",
+    title: "MATA AIR HUB",
+    category: ".NET",
+    color: "bg-purple-400",
+    img: "/placeholder.svg",
+  },
+  {
+    id: 5,
+    slug: "dotnet-05",
+    title: "MATA AIR V2",
+    category: ".NET",
+    color: "bg-purple-400",
+    img: "/placeholder.svg",
+  },
+  {
+    id: 6,
+    slug: "dotnet-06",
+    title: "ECOSYSTEM",
     category: ".NET",
     color: "bg-purple-400",
     img: "/placeholder.svg",
@@ -34,7 +50,7 @@ export const MAIN_QUEST_META = [
 
   // PowerApps Applications
   {
-    id: 6,
+    id: 7,
     slug: "powerapps-01",
     title: "X-CLAIM",
     category: "PowerApps",
@@ -42,7 +58,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 7,
+    id: 8,
     slug: "powerapps-02",
     title: "EMAS",
     category: "PowerApps",
@@ -50,7 +66,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 8,
+    id: 9,
     slug: "powerapps-03",
     title: "AP-INVOICE",
     category: "PowerApps",
@@ -58,7 +74,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 9,
+    id: 10,
     slug: "powerapps-04",
     title: "PRINT TO PDF",
     category: "PowerApps",
@@ -66,7 +82,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 10,
+    id: 11,
     slug: "powerapps-05",
     title: "AWAS",
     category: "PowerApps",
@@ -74,7 +90,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 11,
+    id: 12,
     slug: "powerapps-06",
     title: "E-BUDGET",
     category: "PowerApps",
@@ -82,7 +98,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 12,
+    id: 13,
     slug: "powerapps-07",
     title: "HAZARD",
     category: "PowerApps",
@@ -90,7 +106,7 @@ export const MAIN_QUEST_META = [
     img: "/placeholder.svg",
   },
   {
-    id: 13,
+    id: 14,
     slug: "powerapps-08",
     title: "ANSI",
     category: "PowerApps",

@@ -145,4 +145,3 @@ export const PORTFOLIO_DATA = {
         "UI UX"
     ]
 };
-
